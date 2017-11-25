@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+
+bool binarysearch(int *num,int s, int E, int n, int k){
+  s= 0;
+  E =n-1;
+  int c;
+  while(s<=E){
+    c=(s+E)/2;
+    if(num[c]<k){
+      s=c+1;
+    }else if(num[c]>k){
+      E=c-1;
+    }else{
+      return true;
+    }
+  }
+ return false; 
+}
+
+
+
+
+char sum8(int *arry, int size){
+    bool flag=false;
+    for(int i=0; i<size; i++){
+    if(binarysearch(arry,i,size-1-i,size,8-arry[i])==true){
+      cout <<"YES";
+      flag=true;
+      break;
+      }
+   }
+
+  if(!flag){
+    cout << "NO way foo";
+  }
+}
+
+
+int main(){
+  int l=5;
+  int num[l]={5,4,5,6,7};
+   sum8(num,l);  
+}
